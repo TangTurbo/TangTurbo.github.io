@@ -28,6 +28,7 @@ Simulink是由MathWorks公司开发的多领域动态系统建模和仿真工具
 1. 汽车工业：自动驾驶与动力系统仿真。
 2. 航空航天：飞行器控制和任务规划。
 3. 能源行业：智能电网仿真和新能源系统优化。
+
 ![image](https://github.com/user-attachments/assets/111e680b-bc0d-4384-9be6-33bc7d616b55)
 
 尽管Simulink强大且灵活，但在模型开发过程中仍存在挑战，如模型构建的复杂性、模块复用的困难、错误调试成本高等问题。
@@ -35,6 +36,7 @@ Simulink是由MathWorks公司开发的多领域动态系统建模和仿真工具
 ## 大语言模型（LLMs）概述
 
 ### 语言模型历史
+
 ![image](https://github.com/user-attachments/assets/6b0476a3-8a42-44a6-a98d-1e961ef7646a)
 
 大语言模型（如OpenAI的GPT系列、Google的Bard）是基于深度学习的自然语言处理系统，其核心技术包括Transformer架构和大规模预训练。这些模型通过学习海量数据中的语言模式，具备以下特点：
@@ -72,6 +74,7 @@ Simulink是由MathWorks公司开发的多领域动态系统建模和仿真工具
 链式思考：鼓励模型不仅生成最终的答案，而且逐步展示出它是如何推理并得出结论的。在执行复杂问题求解时，模型会生成一系列中间步骤，每个步骤都可以视为解答问题的一个逻辑片段或计算过程的一部分。
 
 零样本学习：一种能够在没有任何样本的情况下学习新类别的方法。通常情况下，模型只能识别它在训练集中见过的类别。但通过零样本学习，模型能够利用一些辅助信息来进行推理，并推广到从未见过的类别上。这些辅助信息可以是关于类别的语义描述、属性或其他先验知识。
+
 ![image](https://github.com/user-attachments/assets/baae2c06-0d58-47f6-8921-daaee2031bce)
 
 ##### 三、研究目的
@@ -99,6 +102,7 @@ Simulink是由MathWorks公司开发的多领域动态系统建模和仿真工具
 ✗表示切片的适配性极性与原始模型不同；
 
 V表示切片完全满足要求。
+
 ![image](https://github.com/user-attachments/assets/bbee9360-71a0-4ac8-9570-cb51dc06aa5f)
 
 -表示不准确的模型切片
@@ -146,6 +150,7 @@ V表示切片完全满足要求。
 ##### 四、技术方法
 
 1. 数据收集：通过随机模型生成器SLforge和开源代码库（GitHub和MATLAB Central）获取Simulink模型。
+
 ![image](https://github.com/user-attachments/assets/ae2d88a1-7cf5-498d-8ec3-73fffc051037)
 
 3. 数据预处理：简化模型以去除无法处理的特征，并重构模型以适应GPT-2的学习风格。
@@ -180,6 +185,7 @@ V表示切片完全满足要求。
 ##### 二、基础知识
 
 HumanEval是由OpenAI编写发布的代码生成评测数据集，包含164道人工编写的Python编程问题，模型针对每个单元测试问题生成k（k=1,10,100）个代码样本，如果有任何样本通过单元测试，则认为问题已解决，并报告问题解决的总比例，即 Pass@k得分。
+
 ![image](https://github.com/user-attachments/assets/08988aba-1035-4095-9795-627517a5eaec)
 
 ##### 三、实验结果分析
@@ -187,6 +193,7 @@ HumanEval是由OpenAI编写发布的代码生成评测数据集，包含164道�
 ###### 编译率分析：
 
 ![image](https://github.com/user-attachments/assets/0dc62894-2da8-4e66-9f35-db64c3a9c721)
+
 在HumanEval数据集上表现最好的是StarCoder，高达70.0%，而其他只有不到一半是可编译的；在SF110数据集上，编译率都不高，最高的StarCoder仅有12.7%；启发式修复后，编译率平均提高了41%，Codex(2K)增幅最大，而启发式方法对StarCoder的作用不大，只提高了6.9%的编译率。单看HumanEval数据集，常出现的编译错误原因是编译器找不到符号、从数据格式转换不兼容等原因；而在SF110数据集方面，常出现的编译错误是编译器找不到符号，或者class是抽象类而无法实例化造成的。
 
 ###### 测试通过分析：
