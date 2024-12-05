@@ -89,6 +89,7 @@ Simulink是由MathWorks公司开发的多领域动态系统建模和仿真工具
 ##### 五、实验结果分析及结论
 
 ![image](https://github.com/user-attachments/assets/6257f68d-701d-499c-95f6-c9cd2499b9d3)
+
 “CT”、“NS”和“ZS”分别对应思维链策略、N-shot 策略和Z-shot策略。
 
 每列对应Tustin模型的要求R，即 R1-R5。
@@ -145,14 +146,16 @@ V表示切片完全满足要求。
 
 1. 数据收集：通过随机模型生成器SLforge和开源代码库（GitHub和MATLAB Central）获取Simulink模型。
 ![image](https://github.com/user-attachments/assets/ae2d88a1-7cf5-498d-8ec3-73fffc051037)
-2. 数据预处理：简化模型以去除无法处理的特征，并重构模型以适应GPT-2的学习风格。
-3. 模型训练：使用预训练的GPT-2模型，并用随机生成的模型和开源模型进行微调。
-4. 模型生成：从调整过的GPT-2模型中迭代采样生成Simulink模型文件。
-5. 模型验证：使用有效性检查器检测Simulink工具的崩溃，并手动审查每个崩溃案例。
+
+3. 数据预处理：简化模型以去除无法处理的特征，并重构模型以适应GPT-2的学习风格。
+4. 模型训练：使用预训练的GPT-2模型，并用随机生成的模型和开源模型进行微调。
+5. 模型生成：从调整过的GPT-2模型中迭代采样生成Simulink模型文件。
+6. 模型验证：使用有效性检查器检测Simulink工具的崩溃，并手动审查每个崩溃案例。
 
 ##### 五、实验评估
 
 ![image](https://github.com/user-attachments/assets/1d948359-95cd-47a3-b538-1705e3c6324a)
+
 与最接近的竞争对手相比，SLGPT能够生成有效且更接近开源模型的Simulink模型，并且发现了比DeepFuzzSL更多的Simulink开发工具链错误。同时，其实现、参数设置和训练集都是开源的。
 
 ##### 六、个人观点
@@ -188,6 +191,7 @@ HumanEval是由OpenAI编写发布的代码生成评测数据集，包含164道�
 ###### 测试通过分析：
 
 ![image](https://github.com/user-attachments/assets/4547fc6a-a136-4d95-b023-4ff1d3857d81)
+
 测试正确性方面有两个指标，Correct指的是所有测试方法均能通过，Somewhat Correct指的是至少有通过一个测试方法的测试。
 
 在HumanEval数据集方面，StarCoder表现最好，测试通过率为81.3%，但是ChatGPT的Somewhat Correct的指标高达92.3%。同时增加Codex的Tokens数不能产生更高的正确性。
@@ -197,6 +201,7 @@ HumanEval是由OpenAI编写发布的代码生成评测数据集，包含164道�
 ###### 测试覆盖率：
 
 ![image](https://github.com/user-attachments/assets/b216d96d-c09e-467e-a11e-d0259dd86cd6)
+
 在HumanEval数据集方面，LLM的行覆盖率在67%-87.7%，分支覆盖率在69.3-92.8%，但是低于手动测试和Evosuit生成的覆盖率。在SF110数据集方面，比HumanEval的覆盖率要差很多，均不到2%，Evosuite覆盖率分别是27.5%和20.2%。
 
 ###### 总结
@@ -225,6 +230,7 @@ HumanEval是由OpenAI编写发布的代码生成评测数据集，包含164道�
 ##### 二、实验结果及分析
 
 ![image](https://github.com/user-attachments/assets/26121799-e52b-4054-80e5-559c1f80c3eb)
+
 表中使用个人奖励对RL进行**微调后**测试集的质量指标。“√”表示应该鼓励的积极特征；“×”表示应该劝阻的负面特征。
 
 与基础模型相比，RL优化模型，使模型提高了21%，并生成了将近100%的语法正确的代码。并且7个指标中的四个指标上优于GPT-4。
