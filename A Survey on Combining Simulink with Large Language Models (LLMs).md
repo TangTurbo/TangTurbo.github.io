@@ -227,9 +227,9 @@ SLGPT生成的模型发现了DeepFuzzSL发现的所有已知缺陷，并新增�
 
 #### 相关论文
 
-论文1：An Empirical Study of Using Large Language Models for Unit Test Generation (arxiv.org)
+论文1：[An Empirical Study of Using Large Language Models for Unit Test Generation (arxiv.org)](https://arxiv.org/pdf/2305.00418v3)
 
-论文2：[2310.02368] Reinforcement Learning from Automatic Feedback for High-Quality Unit Test Generation (arxiv.org)
+论文2：[[2310.02368] Reinforcement Learning from Automatic Feedback for High-Quality Unit Test Generation (arxiv.org)](https://arxiv.org/pdf/2310.02368)
 
 论文1重点研究了大语言模型在单元测试生成中的应用，这启示我们可以探索类似的方法，提供Simulink模型的结构、属性或功能性描述作为输入，从而生成相关的测试、验证模型，甚至代码。
 
