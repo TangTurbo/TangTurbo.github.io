@@ -92,10 +92,11 @@ Simulink是由MathWorks公司开发的多领域动态系统建模和仿真工具
 ![image](https://github.com/user-attachments/assets/e70383b0-42e4-419a-9e94-753c1333f1af)
 
 五个输入：
-Simulink模型
-计算模型切片的自然语言需求陈述R
-用于提取与R相关的Simulink块的提示模板
-训练示例
+
+Simulink模型<br>
+计算模型切片的自然语言需求陈述R<br> 
+用于提取与R相关的Simulink块的提示模板<br>
+训练示例<br>
 文本表示粒度的冗长程度
 
 ##### 五、实验过程
