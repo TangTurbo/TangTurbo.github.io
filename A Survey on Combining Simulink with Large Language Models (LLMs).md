@@ -246,15 +246,11 @@ SLGPT生成的模型发现了DeepFuzzSL发现的所有已知缺陷，并新增�
 
 已有研究表明，LLMs可将自然语言翻译为MATLAB代码，而MATLAB代码可进一步用于Simulink建模。例如，OpenAI的Codex模型被用于将控制系统的文字描述转化为MATLAB脚本，再通过脚本自动生成Simulink模型。
 
-#### 自然语言接口的开发
-
-一些研究团队正在探索开发自然语言与Simulink的接口。例如，通过API集成，用户可以用语音或文字直接控制Simulink模型的创建与仿真。
-
 #### 相关论文
 
 链接：[Evaluating Large Language Models Trained on Code](https://arxiv.org/abs/2107.03374) (arxiv.org)
 
-论文详细描述了Codex模型的能力，其中包括将自然语言描述转换为代码的能力，虽然论文中没有直接提及Simulink，但是Codex生成的MATLAB代码可以进一步用于Simulink建模。
+论文详细描述了Codex模型的能力，其中包括将自然语言描述转换为代码的能力，Codex生成的MATLAB代码可以进一步用于Simulink建模。
 
 ## 结论
 
