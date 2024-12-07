@@ -101,18 +101,17 @@ Simulink模型<br>
 
 ##### 五、实验过程
 
-Step1 将Simulink模型转换为文本表示，以便LLM的处理。这里作者进行实验探讨了不同粒度的转换对生成切片的准确性的影响。
+**Step1** 将Simulink模型转换为文本表示，以便LLM的处理。这里作者进行实验探讨了不同粒度的转换对生成切片的准确性的影响。
+
 模型节选分别在高中低三种冗余度下的文本表示：
 
 ![image](https://github.com/user-attachments/assets/f4befa1c-d367-4982-9377-a8c46b5bc215)
 
-Step2 作者设计了不同的提示策略（思维链策略、N-shot 策略和Z-shot策略），引导LLM识别满足特定需求的Simulink块。
+**Step2** 作者设计了不同的提示策略（思维链策略、N-shot 策略和Z-shot策略），引导LLM识别满足特定需求的Simulink块。
 
 ![image](https://github.com/user-attachments/assets/af63737a-9d8c-4f2a-a43a-699ca3c1531a)
 
-Step3 根据LLM识别的模块，构建模型切片。通过执行这些切片并比较它们满足需求的能力，与原始模型进行对比，以验证切片的准确性。如果在评估R的适配性时，在切片和原始模型上都产生正值，或者都产生负值/零值，就认为根据要求R生成的切片是准确的。
-
-
+**Step3** 根据LLM识别的模块，构建模型切片。通过执行这些切片并比较它们满足需求的能力，与原始模型进行对比，以验证切片的准确性。如果在评估R的适配性时，在切片和原始模型上都产生正值，或者都产生负值/零值，就认为根据要求R生成的切片是准确的。
 
 ##### 六、实验结果分析及结论
 
@@ -182,24 +181,25 @@ V表示切片完全满足要求。
 
 ##### 四、实验过程
 
-Step1 数据收集：通过随机模型生成器SLforge和开源代码库（GitHub和MATLAB Central）获取Simulink模型。
+**Step1** 数据收集：通过随机模型生成器SLforge和开源代码库（GitHub和MATLAB Central）获取Simulink模型。
 
 ![image](https://github.com/user-attachments/assets/ae2d88a1-7cf5-498d-8ec3-73fffc051037)
 
-Step2 数据预处理：简化模型以去除冗余信息（如注释、默认配置、块位置信息），并采用广度优先算法重构模型以适应GPT-2的学习风格。
+**Step2** 数据预处理：简化模型以去除冗余信息（如注释、默认配置、块位置信息），并采用广度优先算法重构模型以适应GPT-2的学习风格。
 
 ![image](https://github.com/user-attachments/assets/a8224a71-d9ba-406f-bb53-bbb0258ecba7)
 
 重构算法解析：
-source_blks (S)：Simulink模型的起始块集合，代表模型中无输入的起始块。
-other_blks (B)：模型中剩余的其他块。
-graph_info (G)：描述Simulink模型的图信息，包括块之间的连线关系（邻接信息）。
+source_blks (S)：Simulink模型的起始块集合，代表模型中无输入的起始块。<br>
+other_blks (B)：模型中剩余的其他块。<br>
+graph_info (G)：描述Simulink模型的图信息，包括块之间的连线关系（邻接信息）。<br>
 C_BFS：重新排列后的Simulink模型块序列（基于广度优先搜索顺序）。
+
 首先当起始块集合S或其余块集合B非空时，进入主循环，初始化空队列Q。主循环用来处理集合S和B：从S或B中取出一个块b，优先从S中选取（如果S非空），将b添加到队列Q的尾部。接着采用广度优先算法进行队列的处理，当队列Q为空时，回到主循环，检查S和B是否仍有未处理的块。如果两者都为空，算法终止。
 
-Step3 模型训练与生成：使用预训练的GPT-2模型，并用随机生成的模型和开源模型进行微调，然后从调整过的GPT-2模型中迭代采样生成Simulink模型文件。
+**Step3** 模型训练与生成：使用预训练的GPT-2模型，并用随机生成的模型和开源模型进行微调，然后从调整过的GPT-2模型中迭代采样生成Simulink模型文件。
 
-Step4 模型验证：使用有效性检查器检测Simulink工具的崩溃，并手动审查每个崩溃案例。
+**Step4** 模型验证：使用有效性检查器检测Simulink工具的崩溃，并手动审查每个崩溃案例。
 
 ##### 五、实验结果与评估
 
@@ -228,9 +228,9 @@ SLGPT生成的模型发现了DeepFuzzSL发现的所有已知缺陷，并新增�
 
 #### 相关论文
 
-论文1：[An Empirical Study of Using Large Language Models for Unit Test Generation (arxiv.org)](https://arxiv.org/pdf/2305.00418v3)
+**论文1**：[An Empirical Study of Using Large Language Models for Unit Test Generation (arxiv.org)](https://arxiv.org/pdf/2305.00418v3)
 
-论文2：[[2310.02368] Reinforcement Learning from Automatic Feedback for High-Quality Unit Test Generation (arxiv.org)](https://arxiv.org/pdf/2310.02368)
+**论文2**：[[2310.02368] Reinforcement Learning from Automatic Feedback for High-Quality Unit Test Generation (arxiv.org)](https://arxiv.org/pdf/2310.02368)
 
 论文1重点研究了大语言模型在单元测试生成中的应用，这启示我们可以探索类似的方法，提供Simulink模型的结构、属性或功能性描述作为输入，从而生成相关的测试、验证模型，甚至代码。
 
