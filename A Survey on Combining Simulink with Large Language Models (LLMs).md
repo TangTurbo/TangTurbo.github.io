@@ -189,7 +189,7 @@ V表示切片完全满足要求。
 
 ![image](https://github.com/user-attachments/assets/a8224a71-d9ba-406f-bb53-bbb0258ecba7)
 
-重构算法解析：
+重构算法解析：<br>
 source_blks (S)：Simulink模型的起始块集合，代表模型中无输入的起始块。<br>
 other_blks (B)：模型中剩余的其他块。<br>
 graph_info (G)：描述Simulink模型的图信息，包括块之间的连线关系（邻接信息）。<br>
